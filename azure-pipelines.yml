@@ -1,13 +1,5 @@
 # Starter pipeline
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'specific'
-    project: 'd7fea377-9dd2-4dd2-93b0-37212bd23ca8'
-    pipeline: '1'
-    buildVersionToDownload: 'latest'
-    allowPartiallySucceededBuilds: true
-    downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -26,3 +18,14 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+  
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: 'd7fea377-9dd2-4dd2-93b0-37212bd23ca8'
+    pipeline: '1'
+    specificBuildWithTriggering: true
+    buildVersionToDownload: 'latest'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
